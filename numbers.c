@@ -1,5 +1,6 @@
 #include "array.h"
 #include <stdio.h>
+#include <string.h>
 
 int add_one(int value)
 {
@@ -19,12 +20,10 @@ int sum(int num1, int num2)
 int main(void)
 {
   Array_ptr user_data = create_array(6);
-  user_data->array[0] = 1;
-  user_data->array[1] = 2;
-  user_data->array[2] = 3;
-  user_data->array[3] = 4;
-  user_data->array[4] = 5;
-  user_data->length = 5;
+  int sample_data[5] = {1, 2, 3, 4, 5};
+  memcpy(user_data->array, sample_data, sizeof(sample_data));
+  user_data->length = sizeof(sample_data) / sizeof(int);
+
   printf("Given list :");
   print_array(user_data);
   NEW_LINE;
