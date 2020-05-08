@@ -4,6 +4,9 @@
 Test_report_ptr run_tests(Test_report_ptr test_watcher)
 {
   test_create_array(test_watcher);
+  test_filter(test_watcher);
+  test_map(test_watcher);
+  test_reduce(test_watcher);
   return test_watcher;
 }
 

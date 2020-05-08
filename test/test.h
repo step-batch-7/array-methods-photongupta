@@ -19,6 +19,9 @@ void assert_ok(int,Char_ptr,Test_report_ptr);
 float percentage(int,int);
 
 void test_create_array(Test_report_ptr test_watcher);
+void test_filter(Test_report_ptr test_watcher);
+void test_map(Test_report_ptr test_watcher);
+void test_reduce(Test_report_ptr test_watcher);
 
 Test_report_ptr run_tests(Test_report_ptr);
 

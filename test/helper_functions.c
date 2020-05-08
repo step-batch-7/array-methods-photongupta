@@ -36,13 +36,6 @@ void assert_int(int actual, int expected, Char_ptr message, Test_report_ptr test
   NEW_LINE;
 }
 
-void assert_ok(int value, Char_ptr message, Test_report_ptr test_watcher)
-{
-  NEW_LINE;
-  print_status(value, test_watcher);
-  printf("%s", message);
-}
-
 float percentage(int total, int value)
 {
   return (100 * value) / total;
