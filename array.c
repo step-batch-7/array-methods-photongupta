@@ -35,16 +35,16 @@ Array_ptr map(Array_ptr src, Mapper mapper)
 
 Array_ptr filter(Array_ptr src, Predicate predicate)
 {
-  Array_ptr filtered = create_array(src->length);
+  Array_ptr filtered_list = create_array(src->length);
   for (int index = 0; index < src->length; index++)
   {
     if (predicate(src->array[index]))
     {
-      filtered->array[filtered->length] = src->array[index];
-      filtered->length += 1;
+      filtered_list->array[filtered_list->length] = src->array[index];
+      filtered_list->length += 1;
     }
   }
-  return get_copy(filtered);
+  return get_copy(filtered_list);
 }
 
 int reduce(Array_ptr src, int context, Reducer reducer)

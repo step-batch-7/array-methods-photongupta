@@ -19,10 +19,11 @@ int sum(int num1, int num2)
 
 int main(void)
 {
-  Array_ptr user_data = create_array(6);
-  int sample_data[5] = {1, 2, 3, 4, 5};
+  int sample_data[5] = {10, 2, 6, 4, 5};
+  int length = sizeof(sample_data) / sizeof(int);
+  Array_ptr user_data = create_array(length);
+  user_data->length = length;
   memcpy(user_data->array, sample_data, sizeof(sample_data));
-  user_data->length = sizeof(sample_data) / sizeof(int);
 
   printf("Given list :");
   print_array(user_data);
