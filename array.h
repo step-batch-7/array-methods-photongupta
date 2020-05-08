@@ -24,7 +24,6 @@ typedef struct
 typedef Array *Array_ptr;
 
 Array_ptr create_array(int length);
-Array_ptr get_copy(Array_ptr src);
 void print_array(Array_ptr src);
 
 Array_ptr map(Array_ptr src, Mapper mapper);

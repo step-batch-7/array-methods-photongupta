@@ -31,9 +31,9 @@ void print_status(int status, Test_report_ptr test_watcher)
 
 void assert_int(int actual, int expected, Char_ptr message, Test_report_ptr test_watcher)
 {
-  NEW_LINE;
   print_status(actual == expected, test_watcher);
   printf("%s", message);
+  NEW_LINE;
 }
 
 void assert_ok(int value, Char_ptr message, Test_report_ptr test_watcher)
