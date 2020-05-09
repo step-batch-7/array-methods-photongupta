@@ -1,4 +1,3 @@
-  
 #! /bin/bash
 executable=$1
 rm -rf *.o

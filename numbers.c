@@ -19,7 +19,7 @@ int sum(int num1, int num2)
 
 int main(void)
 {
-  int sample_data[5] = {10, 2, 6, 4, 5};
+  int sample_data[5] = {10, 11, 6, 4, 5};
   int length = sizeof(sample_data) / sizeof(int);
   Array_ptr user_data = create_array(length);
   user_data->length = length;
