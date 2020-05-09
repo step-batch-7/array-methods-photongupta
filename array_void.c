@@ -36,6 +36,17 @@ ArrayVoid_ptr filter_void(ArrayVoid_ptr src, PredicateVoid predicate)
   return get_void_copy(filtered_list);
 }
 
+ArrayVoid_ptr map_void(ArrayVoid_ptr src, MapperVoid mapper)
+{
+  ArrayVoid_ptr mapped_list = create_void_array(src->length);
+  for (int index = 0; index < src->length; index++)
+  {
+    mapped_list->array[index] = mapper(src->array[index]);
+    mapped_list->length++;
+  }
+  return mapped_list;
+}
+
 void print_void_array(ArrayVoid_ptr src, Display displayer)
 {
   NEW_LINE;
