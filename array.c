@@ -27,7 +27,7 @@ Array_ptr map(Array_ptr src, Mapper mapper)
   Array_ptr mapped_list = create_array(src->length);
   for (int index = 0; index < src->length; index++)
   {
-    mapped_list->array[index] = mapper(src->array[index]);
+    mapped_list->array[index] = (*mapper)(src->array[index]);
     mapped_list->length++;
   }
   return mapped_list;
@@ -38,7 +38,7 @@ Array_ptr filter(Array_ptr src, Predicate predicate)
   Array_ptr filtered_list = create_array(src->length);
   for (int index = 0; index < src->length; index++)
   {
-    if (predicate(src->array[index]))
+    if ((*predicate)(src->array[index]))
     {
       filtered_list->array[filtered_list->length] = src->array[index];
       filtered_list->length += 1;
@@ -52,7 +52,7 @@ int reduce(Array_ptr src, int context, Reducer reducer)
   int result = context;
   for (int index = 0; index < src->length; index++)
   {
-    result = reducer(result, src->array[index]);
+    result = (*reducer)(result, src->array[index]);
   }
   return result;
 }

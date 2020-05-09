@@ -1,7 +1,7 @@
 #ifndef __TEST_H
 #define __TEST_H
 
-#include "../array.h"
+#include "../array_void.h"
 typedef char *Char_ptr;
 
 typedef struct Test_report{

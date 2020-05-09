@@ -27,7 +27,7 @@ ArrayVoid_ptr filter_void(ArrayVoid_ptr src, PredicateVoid predicate)
   ArrayVoid_ptr filtered_list = create_void_array(src->length);
   for (int index = 0; index < src->length; index++)
   {
-    if (predicate(src->array[index]))
+    if ((*predicate)(src->array[index]))
     {
       filtered_list->array[filtered_list->length] = src->array[index];
       filtered_list->length += 1;
@@ -41,7 +41,7 @@ ArrayVoid_ptr map_void(ArrayVoid_ptr src, MapperVoid mapper)
   ArrayVoid_ptr mapped_list = create_void_array(src->length);
   for (int index = 0; index < src->length; index++)
   {
-    mapped_list->array[index] = mapper(src->array[index]);
+    mapped_list->array[index] = (*mapper)(src->array[index]);
     mapped_list->length++;
   }
   return mapped_list;
@@ -52,7 +52,7 @@ Object reduce_void(ArrayVoid_ptr src, Object context, ReducerVoid reducer)
   Object result = context;
   for (int index = 0; index < src->length; index++)
   {
-    result = reducer(result, src->array[index]);
+    result = (*reducer)(result, src->array[index]);
   }
   return result;
 }
