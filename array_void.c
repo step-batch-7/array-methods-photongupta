@@ -47,6 +47,16 @@ ArrayVoid_ptr map_void(ArrayVoid_ptr src, MapperVoid mapper)
   return mapped_list;
 }
 
+Object reduce_void(ArrayVoid_ptr src, Object context, ReducerVoid reducer)
+{
+  Object result = context;
+  for (int index = 0; index < src->length; index++)
+  {
+    result = reducer(result, src->array[index]);
+  }
+  return result;
+}
+
 void print_void_array(ArrayVoid_ptr src, Display displayer)
 {
   NEW_LINE;
