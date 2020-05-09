@@ -1,47 +1,66 @@
-#include "array.h"
+#include "array_void.h"
 #include <stdio.h>
 #include <string.h>
 
-int add_one(int value)
+Bool is_even(Object value)
 {
-  return value + 1;
+  return !(*(int *)value % 2);
 }
 
-Bool is_even(int value)
+Bool is_capital(Object value)
 {
-  return !(value % 2);
+  return (*(char *)value >= 65) && (*(char *)value <= 90);
 }
 
-int sum(int num1, int num2)
+void print_int(Object value)
 {
-  return num1 + num2;
+  printf("%d ", *(int *)value);
+}
+
+void print_char(Object value)
+{
+  printf("%c ", *(int *)value);
 }
 
 int main(void)
 {
-  int sample_data[5] = {10, 11, 6, 4, 5};
-  int length = sizeof(sample_data) / sizeof(int);
-  Array_ptr user_data = create_array(length);
-  user_data->length = length;
-  memcpy(user_data->array, sample_data, sizeof(sample_data));
-
+  ArrayVoid_ptr int_list = create_void_array(3);
+  int a = 2;
+  int b = 3;
+  int c = 4;
+  int_list->array[0] = &a;
+  int_list->array[1] = &b;
+  int_list->array[2] = &c;
+  int_list->length = 3;
+  Display displayer = &print_int;
   printf("Given list :");
-  print_array(user_data);
-  NEW_LINE;
-
-  printf("Mapped list(add one):");
-  Array_ptr mapped_list = map(user_data, &add_one);
-  print_array(mapped_list);
+  print_void_array(int_list, displayer);
   NEW_LINE;
 
   printf("Even list :");
-  Array_ptr even_list = filter(user_data, &is_even);
-  print_array(even_list);
+  PredicateVoid predicate = &is_even;
+  ArrayVoid_ptr even_list = filter_void(int_list, predicate);
+  print_void_array(even_list, displayer);
   NEW_LINE;
 
-  printf("Sum of all numbers in the list :\n");
-  int result = reduce(user_data, 0, &sum);
-  printf("%d", result);
+  ArrayVoid_ptr char_list = create_void_array(3);
+  char a2 = 'A';
+  char b2 = 'm';
+  char c2 = 'K';
+  char_list->array[0] = &a2;
+  char_list->array[1] = &b2;
+  char_list->array[2] = &c2;
+  char_list->length = 3;
+  displayer = &print_char;
+
+  printf("Given list :");
+  print_void_array(char_list, displayer);
+  NEW_LINE;
+
+  printf("Capital letters :");
+  predicate = &is_capital;
+  ArrayVoid_ptr capital_letters = filter_void(char_list, predicate);
+  print_void_array(capital_letters, displayer);
   NEW_LINE;
 
   return 0;
